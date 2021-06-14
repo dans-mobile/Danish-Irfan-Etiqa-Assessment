@@ -85,7 +85,8 @@ class TodoListController extends GetxController {
     editModel.startDate = selectedDateCont.text;
     editModel.endDate = selectedSecondDateCont.text;
     editModel.timeLeft = isTimeEdit.value ? timeLeft : todoModel!.timeLeft;
-    editModel.timeLeftDateTime = isEdit.value? second : todoModel!.timeLeftDateTime;
+    editModel.timeLeftDateTime =
+        isEdit.value ? second : todoModel!.timeLeftDateTime;
     editModel.isToday = isEdit.value ? isToday.value : todoModel!.isToday;
     editModel.countdownDays =
         isEdit.value ? countdownDays.value : todoModel!.countdownDays;
@@ -128,7 +129,7 @@ class TodoListController extends GetxController {
       firstSelected.value = true;
 
       if (selectedSecondDateCont.text != "") {
-        if (first.isAfter(second)) {
+        if (first.isAfter(second) || first.isAtSameMomentAs(second)) {
           print("Debug clear second date field");
           selectedSecondDateCont.text = "";
         }
