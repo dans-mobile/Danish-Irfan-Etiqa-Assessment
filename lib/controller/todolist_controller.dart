@@ -86,7 +86,8 @@ class TodoListController extends GetxController {
     editModel.timeLeft = timeLeft;
     editModel.timeLeftDateTime = second;
     editModel.isToday = isEdit.value ? isToday.value : todoModel!.isToday;
-    editModel.countdownDays = countdownDays.value;
+    editModel.countdownDays =
+        isEdit.value ? countdownDays.value : todoModel!.countdownDays;
 
     print(" Debug edit to Json: ${editModel.toJson()}");
 
@@ -119,7 +120,6 @@ class TodoListController extends GetxController {
     print("Debug isEdit: ${isEdit.value}");
 
     if (firstDate.value == true) {
-      print("Debug 1");
       first = args.value;
       selectedDateCont.text = f.format(first);
       firstDate.value = false;
@@ -132,11 +132,13 @@ class TodoListController extends GetxController {
         }
       }
 
-      var utcToday = DateTime.now().toUtc();
-      var utcFirst = first.toUtc();
+      var utcToday = DateTime.now();
+      var utcFirst = first;
 
-      var d1 = DateTime.utc(utcToday.day, utcToday.month, utcToday.year);
-      var d2 = DateTime.utc(utcFirst.day, utcFirst.month, utcFirst.year);
+      var d1 = DateTime(utcToday.day, utcToday.month, utcToday.year);
+      var d2 = DateTime(utcFirst.day, utcFirst.month, utcFirst.year);
+
+      print(" Today: $d1, selected: $d2");
 
       if (d2.day > 0) {
         print("tiber");
@@ -156,11 +158,11 @@ class TodoListController extends GetxController {
       selectedSecondDateCont.text = f.format(second);
       secondDate.value = false;
 
-      var utcToday = DateTime.now().toUtc();
-      var utcFirst = first.toUtc();
+      var utcToday = DateTime.now();
+      var utcFirst = first;
 
-      var d1 = DateTime.utc(utcToday.day, utcToday.month, utcToday.year);
-      var d2 = DateTime.utc(utcFirst.day, utcFirst.month, utcFirst.year);
+      var d1 = DateTime(utcToday.day, utcToday.month, utcToday.year);
+      var d2 = DateTime(utcFirst.day, utcFirst.month, utcFirst.year);
 
       if (d1.compareTo(d2) == 0) {
         print("Debug change 2");
