@@ -28,6 +28,7 @@ class TodoListController extends GetxController {
   //To enable estimated date only if start date selected
   RxBool firstSelected = false.obs;
   RxBool isToday = false.obs;
+  RxBool isEdit = false.obs;
 
   RxInt countdownDays = 0.obs;
 
@@ -76,7 +77,7 @@ class TodoListController extends GetxController {
     editModel.endDate = selectedSecondDateCont.text;
     editModel.timeLeft = timeLeft;
     editModel.timeLeftDateTime = second;
-    editModel.isToday = isToday.value;
+    editModel.isToday = isEdit.value ? isToday.value : todoModel!.isToday;
     editModel.countdownDays = countdownDays.value;
 
     print(" Debug edit to Json: ${editModel.toJson()}");
@@ -99,22 +100,15 @@ class TodoListController extends GetxController {
     selectedSecondDateCont.text = "";
     isToday.value = false;
     countdownDays.value = 0;
+    isEdit.value = false;
     print("Debug reset textformfield");
-  }
-
-  Future<bool> willPopScope() async {
-    print("yeah");
-    resetField();
-    return true;
-  }
-
-  String? isTextEmpty(String? value) {
-    if (value == "") return "Please enter something";
   }
 
   //Select Date Picker Function
   void onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     final f = new DateFormat('dd MMM yyyy');
+    isEdit.value = true;
+    print("Debug isEdit: ${isEdit.value}");
 
     if (firstDate.value == true) {
       print("Debug 1");
@@ -173,6 +167,9 @@ class TodoListController extends GetxController {
     Get.back();
   }
 
+  String? isTextEmpty(String? value) {
+    if (value == "") return "Please enter something";
+  }
 
   //snackbar
   final snackBarDone = SnackBar(
