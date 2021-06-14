@@ -21,6 +21,7 @@ class TodoListController extends GetxController {
   late DateTime first, second;
   RxBool firstDate = false.obs;
   RxBool secondDate = false.obs;
+  RxBool isTimeEdit = false.obs;
 
   RxBool checkBox = false.obs;
 
@@ -75,7 +76,7 @@ class TodoListController extends GetxController {
   }
 
   void editTodo(TodoModel? todoModel) {
-    print("Debug edit 2");
+    print("Debug edit 2 : $isEdit");
     TodoModel editModel = todoList.firstWhere((element) =>
         element.id.toString().toUpperCase() ==
         todoModel!.id.toString().toUpperCase());
@@ -83,8 +84,8 @@ class TodoListController extends GetxController {
     editModel.todo = todoTittle.text;
     editModel.startDate = selectedDateCont.text;
     editModel.endDate = selectedSecondDateCont.text;
-    editModel.timeLeft = timeLeft;
-    editModel.timeLeftDateTime = second;
+    editModel.timeLeft = isTimeEdit.value ? timeLeft : todoModel!.timeLeft;
+    editModel.timeLeftDateTime = isEdit.value? second : todoModel!.timeLeftDateTime;
     editModel.isToday = isEdit.value ? isToday.value : todoModel!.isToday;
     editModel.countdownDays =
         isEdit.value ? countdownDays.value : todoModel!.countdownDays;
@@ -110,6 +111,7 @@ class TodoListController extends GetxController {
     isToday.value = false;
     countdownDays.value = 0;
     isEdit.value = false;
+    isTimeEdit.value = false;
     print("Debug reset textformfield");
   }
 
@@ -157,6 +159,7 @@ class TodoListController extends GetxController {
       timeLeft = second.millisecondsSinceEpoch;
       selectedSecondDateCont.text = f.format(second);
       secondDate.value = false;
+      isTimeEdit.value = true;
 
       var utcToday = DateTime.now();
       var utcFirst = first;
