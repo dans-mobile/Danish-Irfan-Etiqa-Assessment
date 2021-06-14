@@ -2,7 +2,8 @@
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Hello,World
+I'm Muhammad Danish Irfan bin Zulkarnain
 
 For this assestment, I have implemented several package : 
 
@@ -20,3 +21,9 @@ For the state management, I am using Get X because in my current company, we use
 3) To edit the item that you created, hold the item card and it will lead you to form screen with carry value.
 4) Press "edit" to save your change, it will lead back to the first screen and display your chanegs.
 
+##Interaction Guidance
+
+1) To edit item, press and hold to the desired item.
+2) To remove item, tick the checkbox.
+3) The timer will only start if selected start date = today's date.
+4) start date != today's date will indicate countdown days to the start date.
