@@ -4,7 +4,6 @@ import 'package:etiqa_assestment_app/widget/card_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:showcaseview/showcaseview.dart';
 import 'addtodolist_screen.dart';
 
 class TodoListScreen extends StatefulWidget {
