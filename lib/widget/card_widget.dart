@@ -16,7 +16,7 @@ class CardItem extends StatefulWidget {
 }
 
 class _CardItemState extends State<CardItem> {
-  final _controller = Get.put(TodoListController());
+  TodoListController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

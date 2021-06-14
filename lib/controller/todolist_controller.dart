@@ -14,9 +14,9 @@ class TodoListController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   //Controller for TextFormField
-  TextEditingController todoTittle = TextEditingController();
-  TextEditingController selectedDateCont = TextEditingController();
-  TextEditingController selectedSecondDateCont = TextEditingController();
+  late TextEditingController todoTittle,
+      selectedDateCont,
+      selectedSecondDateCont;
 
   //Date Related
   late DateTime first, second;
@@ -36,6 +36,14 @@ class TodoListController extends GetxController {
   late int timeLeft;
 
   @override
+  void onInit() {
+    todoTittle = TextEditingController();
+    selectedDateCont = TextEditingController();
+    selectedSecondDateCont = TextEditingController();
+    super.onInit();
+  }
+
+  @override
   void onClose() {
     todoTittle.dispose();
     selectedDateCont.dispose();
@@ -45,10 +53,11 @@ class TodoListController extends GetxController {
 
   //add To-Do Function
   void addTodo() {
-    var rng = new Random();
+    var generateRandomId = List<int>.generate(999, (i) => i + 1)..shuffle();
+    var id = generateRandomId.removeLast();
 
     TodoModel newTodo = TodoModel(
-        id: rng.nextInt(20).toString(),
+        id: id.toString() + todoTittle.text.trim(),
         todo: todoTittle.text,
         startDate: selectedDateCont.text,
         endDate: selectedSecondDateCont.text,

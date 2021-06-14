@@ -35,6 +35,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                           onLongPress: () {
+                            print("Debug carry: ${_controller.todoList[index].toJson()}");
                             Get.to(() => AddToDoListScreen(
                                 todoModel: _controller.todoList[index],
                                 edit: true));
