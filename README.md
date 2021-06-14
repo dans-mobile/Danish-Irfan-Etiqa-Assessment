@@ -5,6 +5,8 @@
 Hello,World
 I'm Muhammad Danish Irfan bin Zulkarnain
 
+#Please test in on actual device to avoid timezone conflict.
+
 For this assestment, I have implemented several package : 
 
 1) get 
