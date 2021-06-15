@@ -14,7 +14,8 @@ For this assestment, I have implemented several package :
 3) intl
 4) flutter_countdown_timer
 
-For the state management, I am using Get X because in my current company, we use this way and Im used to it atm.
+For the state management, I am using Get X because in my current company, we use this way and Im used to it atm. 
+If there's any chance given, will surely try to learn and adapt new things.
 
 ##App Guidance
 
