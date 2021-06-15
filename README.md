@@ -1,4 +1,4 @@
-# Etiqa Assestment
+# Etiqa Assessment
 
 ## Getting Started
 
